@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    tools:context=".TravelActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relLayout4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lin1"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_mileage"
+                android:layout_width="261dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="90"
+                android:background="#ffffff"
+                android:hint="Enter mileage of your vehicle"
+                android:textColorHint="#ff3d00" />
+
+            <Button
+                android:id="@+id/search_mileage"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="@drawable/roundedbutton2"
+                android:text="Search Mileage of my vehicle" />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lin2"
+            android:layout_marginTop="130dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_distance"
+                android:layout_width="251dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="80"
+                android:background="#ffffff"
+                android:hint="Enter distance between source and destination in kilometres"
+                android:textColorHint="#ff3d00" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search distance"
+                android:layout_weight="20"
+                android:background="@drawable/roundedbutton2"
+                android:id="@+id/search_distance"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relLayout4">
+
+        <Button
+            android:id="@+id/btnGo"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/roundedbutton2"
+            android:text="go" />
+
+        <TextView
+            android:id="@+id/display_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnGo"
+            android:layout_marginTop="10dp"
+            android:background="#F7B71A"
+            android:padding="0dp"
+            android:text="Required amount of fuel is  "
+            android:textColor="#311b92"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/data_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/display_distance"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="#FBC02D"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:paddingTop="20dp"
+            android:text="Loading..."
+            android:textColor="#311b92"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <include layout="@layout/layout_bottom_navigation_view"></include>
+    </RelativeLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

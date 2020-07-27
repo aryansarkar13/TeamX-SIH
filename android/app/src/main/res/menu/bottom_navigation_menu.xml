@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/iot"
+        android:title=""
+        android:icon="@drawable/ic_iot">
+
+    </item>
+
+    <item
+        android:id="@+id/ppump"
+        android:title=""
+        android:icon="@drawable/ic_petrol_pump">
+
+    </item>
+
+    <item
+        android:id="@+id/travel"
+        android:title=""
+        android:icon="@drawable/ic_travel">
+
+    </item>
+
+    <item
+        android:id="@+id/ratings"
+        android:title=""
+        android:icon="@drawable/ic_rating">
+
+    </item>
+
+    <item
+        android:id="@+id/graph"
+        android:title=""
+        android:icon="@drawable/ic_graph">
+
+    </item>
+
+</menu>
