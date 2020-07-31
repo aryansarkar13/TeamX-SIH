@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     route_slug = models.SlugField(max_length=40)
     name = models.CharField(max_length=30, null=False, blank=False)
-    phone = models.CharField(max_length=10,blank=True,null=True)
+    phone = models.CharField(max_length=20,blank=True,null=True)
     email = models.CharField(max_length=50)
 
     def __str__(self):

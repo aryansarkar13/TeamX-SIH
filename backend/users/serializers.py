@@ -3,6 +3,7 @@ from rest_framework.validators import UniqueValidator
 from users.models import *
 from slugify import slugify
 
+
 class RegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True,
@@ -18,14 +19,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
         allow_blank=False,
         required=True,
         error_messages={
-            "required": "Name field is required.", 
+            "required": "Name field is required.",
+        },)
+    phone = serializers.CharField(allow_blank=False, required=True, error_messages={
+        "required": "Name field is required.",
     },)
-    phone = serializers.CharField(allow_blank=False, required=True)
-    
+
     class Meta:
         model = User
-        fields = ['name','phone','password']
-    
+        fields = ['name', 'phone', 'password']
+
     def save(self):
         last_user_id = 0
         if User.objects.count() > 0:
@@ -35,7 +38,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         route_slug = slugify(route_slug, max_length=40)
 
         user = User.objects.create_user(
-            username=self.validated_data['name'],
+            username=self.validated_data['phone'],
             password=self.validated_data['password'],
             phone=self.validated_data['phone'],
             route_slug=route_slug,
@@ -44,9 +47,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
 class LoginSerializer(serializers.Serializer):
     phone = serializers.CharField(allow_blank=False)
     password = serializers.CharField(allow_blank=False)
+
 
 class RealtimeSerializer(serializers.Serializer):
     class Meta:
