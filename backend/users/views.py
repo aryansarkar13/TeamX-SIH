@@ -16,14 +16,13 @@ from django.utils import timezone
 import datetime
 
 
-
 class RegistrationView(APIView):
 
     @swagger_auto_schema(
         operation_id='create_user',
         request_body=RegistrationSerializer,
         responses={
-            
+
         },
     )
     def post(self, request):
@@ -43,22 +42,19 @@ class LoginView(APIView):
         operation_id='login_user',
         request_body=LoginSerializer,
         responses={
-            
+
         },
     )
-
-
-
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
 
         if serializer.is_valid():
-            found_phone =  serializer.data['phone']
-            
+            found_phone = serializer.data['phone']
+
             user = authenticate(
                 username=serializer.data['phone'],
                 password=serializer.data['password']
-                )     
+            )
             if user:
                 token, _ = Token.objects.get_or_create(user=user)
                 return Response({'token': f"Token {token.key}"}, status.HTTP_202_ACCEPTED)
@@ -66,28 +62,26 @@ class LoginView(APIView):
                 try:
                     if User.objects.get(phone=found_phone):
                         return Response({'detail': 'Credentials did not match'}, status.HTTP_401_UNAUTHORIZED)
-                    
+
                 except User.DoesNotExist:
-                    return Response({"detail": "User not found"}, status.HTTP_404_NOT_FOUND)     
+                    return Response({"detail": "User not found"}, status.HTTP_404_NOT_FOUND)
         else:
             data = serializer.errors
             return Response(data, status.HTTP_400_BAD_REQUEST)
 
 
 class RealtimeView(APIView):
-        @swagger_auto_schema(
+    @swagger_auto_schema(
         operation_id='realtime_update',
         request_body=RealtimeSerializer,
         responses={
-            
-            },
-        )
-    
-        def put(self,request):
-            user = request.user
-            serializer = RealtimeSerializer(data = request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response({},status.HTTP_200_OK)
-            return Response(serializer.errors,status.HTTP_400_BAD_REQUEST)
-            
+
+        },
+    )
+    def put(self, request):
+        user = request.user
+        serializer = RealtimeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({}, status.HTTP_200_OK)
+        return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
